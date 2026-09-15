@@ -87,6 +87,17 @@
     .seal { flex: none; width: 76px; height: 76px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; text-align: center; font-weight: 800; line-height: 1.05; font-size: 15px; }
     .seal b { font-size: 26px; display: block; }
 
+    .compare-wrap { overflow-x: auto; max-width: 860px; margin: 0 auto; }
+    .compare { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; font-size: 16px; }
+    .compare th, .compare td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .compare tr:last-child td { border-bottom: 0; }
+    .compare thead th { background: var(--soft); font-size: 15px; }
+    .compare thead th.us { background: var(--accent); color: #fff; }
+    .compare td.us { background: #fff7f4; font-weight: 600; }
+    .compare .yes { color: var(--good); font-weight: 800; }
+    .compare .no { color: var(--muted); }
+    .compare-note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 12px; }
+
     details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin: 0 auto 10px; max-width: 760px; }
     summary { cursor: pointer; font-weight: 700; }
     details p { color: var(--muted); margin: 10px 0 0; }
@@ -170,6 +181,8 @@
     <div class="features">
       <div class="feat"><div class="ico">🔥</div><div><h3>Vendas por mês em cada anúncio</h3><p>Selos na busca com vendas, faturamento, lucro por unidade e idade do anúncio.</p></div></div>
       <div class="feat"><div class="ico">🎯</div><div><h3>Vale a pena entrar?</h3><p>Nota de 0 a 10 para cada nicho: procura, concorrência, espaço para novatos e margem.</p></div></div>
+      <div class="feat"><div class="ico">🥊</div><div><h3>Saturação do mercado</h3><p>Veja se a busca está aberta, disputada ou dominada por poucas lojas, quanto dos anúncios é pago e se anúncios novos já estão vendendo.</p></div></div>
+      <div class="feat"><div class="ico">📈</div><div><h3>Produtos em alta</h3><p>Repita suas buscas e veja quais produtos estão vendendo mais a cada semana, antes de todo mundo copiar.</p></div></div>
       <div class="feat"><div class="ico">🎨</div><div><h3>Cores e variações campeãs</h3><p>Descubra quais cores e tamanhos realmente vendem antes de imprimir.</p></div></div>
       <div class="feat"><div class="ico">🧮</div><div><h3>Lucro real</h3><p>Comissão da Shopee 2026 por faixa de preço, imposto e o custo da sua peça 3D: filamento, energia e perdas.</p></div></div>
       <div class="feat"><div class="ico">✍️</div><div><h3>Título e descrição que vendem</h3><p>Títulos montados com as palavras dos anúncios que mais vendem e descrição pronta para copiar.</p></div></div>
@@ -177,6 +190,27 @@
       <div class="feat"><div class="ico">🔑</div><div><h3>Palavras-chave com volume</h3><p>Volume de busca e lance sugerido da ferramenta de anúncios da Shopee.</p></div></div>
       <div class="feat"><div class="ico">🤖</div><div><h3>Copiar para IA</h3><p>Um clique copia todos os dados prontos para colar no ChatGPT, Claude ou Gemini.</p></div></div>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Feito para quem imprime em 3D</h2>
+    <p class="sub">Ferramentas genéricas de marketplace servem para qualquer produto. O Garimpa3D foi pensado para a rotina de quem vende peças impressas na Shopee.</p>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead><tr><th></th><th class="us">Garimpa3D</th><th>Ferramentas genéricas</th></tr></thead>
+        <tbody>
+          <tr><th>Onde funciona</th><td class="us"><span class="yes">✓</span> Direto nas páginas da Shopee, enquanto você navega</td><td class="no">Muitas focam em outros marketplaces ou funcionam só num site separado</td></tr>
+          <tr><th>Custo da peça 3D</th><td class="us"><span class="yes">✓</span> Filamento, energia, perdas e embalagem no cálculo do lucro</td><td class="no">Calculam só comissão e imposto</td></tr>
+          <tr><th>Cores que vendem</th><td class="us"><span class="yes">✓</span> Ranking de cores e variações, para imprimir só o que sai</td><td class="no">Raramente separam por cor</td></tr>
+          <tr><th>Reclamações de peças</th><td class="us"><span class="yes">✓</span> Quebra, tamanho, acabamento e cor diferente da foto, com o que fazer melhor</td><td class="no">Mostram só a nota média</td></tr>
+          <tr><th>Saturação e produtos em alta</th><td class="us"><span class="yes">✓</span> Lojas que dominam a busca, peso dos anúncios pagos e vendas subindo</td><td>Costumam ter</td></tr>
+          <tr><th>Preço</th><td class="us">R$ 49,90/mês ou R$ 499/ano</td><td class="no">Planos completos costumam custar bem mais</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">Comparação geral com ferramentas de análise para vários tipos de produto. Recursos e preços de cada ferramenta variam.</p>
   </div>
 </section>
 
