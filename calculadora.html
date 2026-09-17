@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de preço para Shopee – makers 3D | Garimpa3D</title>
+  <meta name="description" content="Calculadora grátis de preço, lucro e Shopee Ads para quem vende peças impressas em 3D: comissão Shopee 2026, custo da peça, margem, ROAS mínimo e ACOS.">
+  <style>
+    :root { --ink: #1b1b1f; --muted: #62626e; --line: #ececf2; --soft: #f7f7fa; --accent: #ee4d2d; --good: #16a34a; --bad: #d23c3c; --warn: #d69e2e; --bg: #ffffff; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    a { color: var(--accent); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+    header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-weight: 800; font-size: 20px; text-decoration: none; color: inherit; }
+    .logo span { color: var(--accent); }
+    .btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; padding: 14px 26px; border-radius: 12px; box-shadow: 0 8px 24px rgba(238,77,45,.28); transition: transform .15s; border: 0; cursor: pointer; font-size: 17px; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.sm { padding: 9px 16px; font-size: 15px; box-shadow: none; }
+    .btn.ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
+
+    .top { padding: 40px 0 10px; background: radial-gradient(1200px 400px at 70% 0%, #fff1ec 0%, #fff 60%); }
+    .tag { display: inline-block; background: #fff1ec; color: var(--accent); font-weight: 700; font-size: 14px; padding: 5px 12px; border-radius: 999px; }
+    h1 { font-size: clamp(30px, 4.4vw, 44px); line-height: 1.15; margin: 14px 0 10px; letter-spacing: -.5px; }
+    .lead { font-size: 18px; color: var(--muted); margin: 0 0 8px; max-width: 720px; }
+
+    .grid { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start; padding: 26px 0 10px; }
+    .card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+    .card + .card { margin-top: 18px; }
+    .card h2 { font-size: 19px; margin: 0 0 4px; }
+    .card h3 { font-size: 15px; margin: 18px 0 6px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+    .hint { color: var(--muted); font-size: 14px; margin: 0 0 12px; }
+
+    .form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 12px; }
+    .form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+    .form .full { grid-column: 1 / -1; }
+    input[type=number], select { font: inherit; font-size: 16px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 9px 11px; width: 100%; }
+    input:focus, select:focus { outline: 2px solid #fff1ec; border-color: var(--accent); }
+    .check { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink); grid-column: 1 / -1; }
+
+    .destaques { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+    .big { background: var(--soft); border-radius: 14px; padding: 16px 18px; }
+    .big span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: var(--muted); }
+    .big b { display: block; font-size: 30px; line-height: 1.15; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .big small { color: var(--muted); font-size: 13.5px; display: block; margin-top: 2px; }
+    .big.alt b { color: var(--ink); } .big.zero b { color: var(--muted); font-size: 25px; }
+
+    .linha { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 16px; }
+    .linha.total { border-bottom: 0; border-top: 2px solid var(--line); margin-top: 4px; padding-top: 10px; font-weight: 800; font-size: 18px; }
+    .good { color: var(--good); } .bad { color: var(--bad); } .muted { color: var(--muted); }
+
+    .explica { background: var(--soft); border-radius: 12px; padding: 12px 14px; font-size: 15px; margin: 4px 0 14px; }
+    .regua { position: relative; display: flex; height: 26px; border-radius: 8px; margin: 34px 0 4px; }
+    .regua i { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; font-style: normal; overflow: hidden; white-space: nowrap; }
+    .regua .r1 { background: var(--bad); border-radius: 8px 0 0 8px; }
+    .regua .r2 { background: var(--warn); }
+    .regua .r3 { background: var(--good); border-radius: 0 8px 8px 0; }
+    .regua .fim { border-radius: 0 8px 8px 0; }
+    .marca { position: absolute; top: -26px; bottom: -4px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; max-width: 100%; }
+    .marca em { font-style: normal; font-size: 12px; font-weight: 800; background: #fff; padding: 0 4px; border-radius: 4px; white-space: nowrap; }
+    .marca u { text-decoration: none; width: 3px; flex: 1; background: var(--ink); border-radius: 2px; }
+    .escala { position: relative; height: 18px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; margin-bottom: 14px; }
+    .escala span { position: absolute; transform: translateX(-50%); font-weight: 700; }
+    .escala span:first-child { left: 0; transform: none; }
+    .veredito { border-left: 4px solid currentColor; background: var(--soft); border-radius: 10px; padding: 12px 14px; margin: 14px 0; }
+    .veredito p { margin: 4px 0 0; color: var(--ink); font-size: 15.5px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 15.5px; margin-top: 8px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 9px 8px; text-align: left; }
+    th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); }
+    td.n { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .alerta { background: #fff4f0; border-left: 4px solid var(--accent); border-radius: 10px; padding: 12px 14px; margin-top: 14px; font-size: 15.5px; }
+    details summary { cursor: pointer; font-weight: 700; color: var(--muted); padding: 6px 0; }
+
+    .venda { margin: 40px 0 10px; background: linear-gradient(135deg, #ee4d2d, #ff7a45); color: #fff; border-radius: 20px; padding: 34px; }
+    .venda h2 { font-size: clamp(24px, 3.2vw, 32px); margin: 0 0 8px; }
+    .venda p { font-size: 17.5px; opacity: .95; max-width: 720px; }
+    .venda ul { margin: 14px 0 22px; padding-left: 20px; }
+    .venda li { margin: 6px 0; }
+    .venda .btn { background: #fff; color: var(--accent); }
+    .venda .micro { font-size: 14px; opacity: .9; margin-top: 12px; }
+    footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14.5px; margin-top: 40px; }
+    footer p { margin: 4px 0; }
+
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .venda { padding: 24px; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="./">⛏ Garimpa<span>3D</span></a>
+    <a class="btn sm" href="./#planos">Conhecer a extensão</a>
+  </div>
+</header>
+
+<div class="top">
+  <div class="wrap">
+    <span class="tag">Grátis · sem cadastro</span>
+    <h1>Calculadora de preço e lucro da Shopee para makers 3D</h1>
+    <p class="lead">Coloque o custo da sua peça e descubra por quanto vender, quanto sobra depois da comissão da Shopee 2026 e do imposto, e qual ROAS a sua campanha precisa ter para o anúncio valer a pena.</p>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>1. Custo da sua peça</h2>
+        <p class="hint">Valores padrão de uma impressora FDM comum. Ajuste com os seus.</p>
+        <div class="form">
+          <label class="full">Como calcular o custo
+            <select id="modoCusto">
+              <option value="3d">Calcular pela impressão 3D</option>
+              <option value="manual">Já sei o custo por peça</option>
+            </select>
+          </label>
+          <label>Filamento (R$/kg)<input type="number" id="filamento" value="110" step="1" min="0"></label>
+          <label>Peso da peça (g)<input type="number" id="gramas" value="50" step="1" min="0"></label>
+          <label>Tempo de impressão (h)<input type="number" id="horas" value="3" step="0.1" min="0"></label>
+          <label>Consumo da impressora (W)<input type="number" id="watts" value="150" step="1" min="0"></label>
+          <label>Energia (R$/kWh)<input type="number" id="kwh" value="0.95" step="0.01" min="0"></label>
+          <label>Perdas e falhas (%)<input type="number" id="perdas" value="10" step="1" min="0"></label>
+          <label>Embalagem (R$)<input type="number" id="embalagem" value="2.50" step="0.1" min="0"></label>
+          <label>Mão de obra e acabamento (R$)<input type="number" id="maoObra" value="0" step="0.5" min="0"></label>
+          <label class="full">Custo por peça (R$)<input type="number" id="custoManual" value="15" step="0.1" min="0" disabled></label>
+        </div>
+        <div id="custoRes" style="margin-top:12px"></div>
+      </div>
+
+      <div class="card">
+        <h2>2. Sua meta e suas taxas</h2>
+        <div class="form">
+          <label>Margem desejada (%)<input type="number" id="margem" value="25" step="1" min="0" max="80"></label>
+          <label>Imposto sobre a venda (%)<input type="number" id="imposto" value="7" step="0.5" min="0"></label>
+          <label>Desconto da promoção (%)<input type="number" id="promo" value="20" step="1" min="0" max="90"></label>
+          <label>Vendas por mês<input type="number" id="qtd" value="100" step="1" min="0"></label>
+          <label class="check"><input type="checkbox" id="cpf"> Vendo como CPF com mais de 450 pedidos em 90 dias (+R$ 3 por item)</label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>3. Sua campanha de Ads</h2>
+        <p class="hint">Opcional. Preencha para saber se o anúncio está dando lucro.</p>
+        <div class="form">
+          <label>ROAS atual<input type="number" id="roas" step="0.1" min="0" placeholder="ex.: 4,5"></label>
+          <label>Conversão do anúncio (%)<input type="number" id="conv" step="0.1" min="0" placeholder="ex.: 2"></label>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Por quanto vender</h2>
+        <div class="destaques" id="precos"></div>
+        <div id="alertaFaixa"></div>
+        <h3>Para onde vai cada real do preço</h3>
+        <div class="form full" style="grid-template-columns:1fr;margin-bottom:10px">
+          <label>Preço de venda que você quer conferir (R$)<input type="number" id="preco" step="0.1" min="0"></label>
+        </div>
+        <p class="hint" id="precoOrigem"></p>
+        <div id="quebra"></div>
+      </div>
+
+      <div class="card">
+        <h2>Shopee Ads: dá lucro?</h2>
+        <div class="explica"><b>O que é ROAS?</b> É quanto a campanha vendeu para cada <b>R$ 1</b> gasto no anúncio. ROAS 4 = gastou R$ 10 e vendeu R$ 40. Quanto maior, melhor. Na Shopee: <b>Central do Vendedor › Anúncios Shopee › coluna ROAS</b>.</div>
+        <div id="ads"></div>
+      </div>
+
+      <div class="card">
+        <h2>Comissão da Shopee por faixa de preço</h2>
+        <p class="hint">Tabela usada nas contas desta página (vigente desde março de 2026). Confira na Central do Vendedor se a Shopee mudar.</p>
+        <table>
+          <thead><tr><th>Preço do produto</th><th>Comissão</th></tr></thead>
+          <tbody>
+            <tr><td>até R$ 7,99</td><td>50% do preço</td></tr>
+            <tr><td>R$ 8,00 a R$ 79,99</td><td>20% + R$ 4,00</td></tr>
+            <tr><td>R$ 80,00 a R$ 99,99</td><td>14% + R$ 16,00</td></tr>
+            <tr><td>R$ 100,00 a R$ 199,99</td><td>14% + R$ 20,00</td></tr>
+            <tr><td>R$ 200,00 ou mais</td><td>14% + R$ 26,00</td></tr>
+          </tbody>
+        </table>
+        <p class="hint" style="margin-top:10px">Vendedor CPF com mais de 450 pedidos em 90 dias paga +R$ 3 por item. Frete grátis e taxas de campanhas não entram nesta conta.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="venda">
+    <h2>A calculadora mostra o seu lucro. O Garimpa3D mostra o do concorrente.</h2>
+    <p>Saber o seu custo é metade do caminho. A outra metade é saber <b>o que já vende</b> na Shopee antes de gastar filamento e horas de impressão.</p>
+    <ul>
+      <li><b>Vendas por mês e faturamento</b> de cada anúncio, direto na busca da Shopee</li>
+      <li><b>Cores e variações campeãs</b>: imprima a cor que vende, não a que sobrou</li>
+      <li><b>Nota "vale a pena entrar?"</b> do nicho, com a faixa de preço dos campeões</li>
+      <li><b>Título campeão</b> montado com as palavras de quem mais vende</li>
+      <li><b>Reclamações dos concorrentes</b> agrupadas, para você fazer melhor</li>
+      <li><b>Esta calculadora dentro da extensão</b>, já preenchida com o preço do anúncio aberto</li>
+    </ul>
+    <a class="btn" href="./#planos">Ver planos do Garimpa3D</a>
+    <p class="micro">Funciona no Chrome, Edge, Brave e Opera · garantia de 7 dias</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>⛏ Garimpa3D · RC Suporte – CNPJ 43.260.654/0001-67 · São Bernardo do Campo – SP</p>
+    <p><a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Política de Privacidade</a> · <a href="mailto:aionbotia@gmail.com">aionbotia@gmail.com</a></p>
+    <p>Os valores são estimativas com a tabela de comissão de 2026 e o imposto que você informar. O Garimpa3D é uma ferramenta independente e não é afiliado, patrocinado ou endossado pela Shopee.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  // Mesmas contas do Garimpa3D (src/shared/fees.js), em uma página só.
+  var FAIXAS = [
+    { min: 0, pct: 70, fixed: 0 },
+    { min: 8, pct: 20, fixed: 4 },
+    { min: 80, pct: 14, fixed: 16 },
+    { min: 100, pct: 14, fixed: 20 },
+    { min: 200, pct: 14, fixed: 26 }
+  ];
+  var num = function (v) { return typeof v === 'number' && isFinite(v); };
+  var brl = function (v) { return num(v) ? v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : '—'; };
+  var n2 = function (v, d) { return num(v) ? v.toLocaleString('pt-BR', { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }) : '—'; };
+  var pct = function (v, d) { return num(v) ? (v * 100).toLocaleString('pt-BR', { minimumFractionDigits: d == null ? 1 : d, maximumFractionDigits: d == null ? 1 : d }) + '%' : '—'; };
+  var $ = function (id) { return document.getElementById(id); };
+  var val = function (id) { var v = parseFloat($(id).value); return isNaN(v) ? undefined : v; };
+
+  function faixa(preco) {
+    var achada = FAIXAS[0];
+    for (var i = 0; i < FAIXAS.length; i++) if (preco >= FAIXAS[i].min) achada = FAIXAS[i];
+    return achada;
+  }
+  function extraCpf(preco, s) {
+    if (!s.cpf || preco < 8) return 0;
+    return preco >= 12 ? 3 : Math.max(0, 3 - 0.25 * (12 - preco));
+  }
+  function comissao(preco, s) {
+    var b = faixa(preco);
+    return { fee: preco * b.pct / 100 + b.fixed + extraCpf(preco, s), band: b };
+  }
+  function lucro(preco, s, custo) {
+    if (!num(preco) || preco <= 0) return null;
+    var c = comissao(preco, s);
+    var imposto = preco * s.imposto / 100;
+    var recebe = preco - c.fee - imposto;
+    var valor = recebe - custo;
+    return { preco: preco, fee: c.fee, band: c.band, imposto: imposto, custo: custo, recebe: recebe, lucro: valor, margem: valor / preco };
+  }
+  function custo3d(p) {
+    var filamento = p.gramas * p.filamento / 1000;
+    var energia = p.horas * p.watts / 1000 * p.kwh;
+    var base = filamento + energia;
+    var perdas = base * p.perdas / 100;
+    return { filamento: filamento, energia: energia, perdas: perdas, total: base + perdas + p.embalagem + p.maoObra };
+  }
+  function precoParaMargem(custo, margemPct, s) {
+    var m = margemPct / 100;
+    for (var i = 0; i < FAIXAS.length; i++) {
+      var b = FAIXAS[i];
+      var prox = FAIXAS[i + 1] ? FAIXAS[i + 1].min : Infinity;
+      var denom = 1 - b.pct / 100 - s.imposto / 100 - m;
+      if (denom <= 0) continue;
+      var sobretaxa = s.cpf && b.min >= 8 ? 3 : 0;
+      var p = (custo + b.fixed + sobretaxa) / denom;
+      if (p >= b.min && p < prox) return p;
+    }
+    return undefined;
+  }
+  function precoCharme(p) {
+    if (!num(p) || p <= 0) return undefined;
+    var piso = Math.floor(p);
+    return piso + 0.9 >= p ? piso + 0.9 : piso + 1.9;
+  }
+  // Preço cheio para que, com o desconto, o comprador pague o preço-alvo.
+  function precoCheio(alvo, descontoPct) {
+    if (!num(alvo) || descontoPct <= 0) return null;
+    var d = Math.min(Math.max(descontoPct, 0), 90) / 100;
+    var cheio = precoCharme(alvo / (1 - d));
+    return { cheio: cheio, final: Math.round(cheio * (1 - d) * 100) / 100 };
+  }
+  // Faixas de preço a evitar: logo acima do degrau o vendedor recebe menos.
+  function armadilha(preco, s) {
+    for (var i = 1; i < FAIXAS.length; i++) {
+      var ant = FAIXAS[i - 1], b = FAIXAS[i];
+      if (preco < b.min) continue;
+      var ref = Math.round((b.min - 0.01) * 100) / 100;
+      var liq = function (p, f) { return p * (1 - f.pct / 100 - s.imposto / 100) - f.fixed - (s.cpf && f.min >= 8 ? 3 : 0); };
+      var denom = 1 - b.pct / 100 - s.imposto / 100;
+      if (denom <= 0) continue;
+      var igual = (liq(ref, ant) + b.fixed + (s.cpf && b.min >= 8 ? 3 : 0)) / denom;
+      if (preco < igual) return { de: b.min, ate: Math.ceil(igual * 100) / 100, ref: ref };
+    }
+    return null;
+  }
+  function metricasAds(preco, s, custo, o) {
+    var semAds = lucro(preco, s, custo);
+    if (!semAds) return null;
+    var margem = semAds.margem;
+    var m = {
+      preco: preco, lucroSemAds: semAds.lucro, margemContribuicao: margem,
+      roasMinimo: margem > 0 ? 1 / margem : undefined,
+      acosMaximo: margem > 0 ? margem : undefined,
+      gastoMaximo: semAds.lucro
+    };
+    if (margem > 0 && semAds.lucro > 0.005) {
+      m.roasLucro = Math.ceil(preco / (semAds.lucro - 0.005) * 100) / 100;
+      m.lucroNoRoasLucro = semAds.lucro - preco / m.roasLucro;
+    }
+    var alvo = o.margemAlvo / 100;
+    if (num(alvo)) {
+      m.roasAlvo = margem > alvo ? 1 / (margem - alvo) : undefined;
+      m.gastoAlvo = margem > alvo ? semAds.lucro - alvo * preco : undefined;
+    }
+    if (num(o.conv) && o.conv > 0) {
+      m.conv = Math.min(o.conv, 100) / 100;
+      m.cpcMaximo = m.gastoMaximo * m.conv;
+      if (num(m.gastoAlvo)) m.cpcAlvo = m.gastoAlvo * m.conv;
+    }
+    if (num(o.roas) && o.roas > 0) {
+      var gasto = preco / o.roas;
+      var sobra = semAds.lucro - gasto;
+      m.roas = o.roas;
+      m.gastoPorVenda = gasto;
+      m.lucroComAds = sobra;
+      m.margemComAds = sobra / preco;
+      m.situacao = sobra > 0.005 ? 'lucro' : sobra < -0.005 ? 'prejuizo' : 'empate';
+    }
+    return m;
+  }
+  function cenario(m, roas, vendas) {
+    var vendido = vendas * m.preco;
+    var gasto = vendido / roas;
+    var sobra = vendas * m.lucroSemAds - gasto;
+    return { roas: roas, vendido: vendido, gasto: gasto, sobra: sobra, porVenda: sobra / vendas,
+      situacao: sobra > 0.005 ? 'lucro' : sobra < -0.005 ? 'prejuizo' : 'empate' };
+  }
+
+  var precoManual = false;
+  var campos = ['filamento', 'gramas', 'horas', 'watts', 'kwh', 'perdas', 'embalagem', 'maoObra', 'custoManual', 'margem', 'imposto', 'promo', 'qtd', 'roas', 'conv', 'preco'];
+
+  function calcular() {
+    var modo = $('modoCusto').value;
+    var s = { imposto: val('imposto') || 0, cpf: $('cpf').checked };
+    var p3d = custo3d({
+      filamento: val('filamento') || 0, gramas: val('gramas') || 0, horas: val('horas') || 0,
+      watts: val('watts') || 0, kwh: val('kwh') || 0, perdas: val('perdas') || 0,
+      embalagem: val('embalagem') || 0, maoObra: val('maoObra') || 0
+    });
+    var custo = modo === 'manual' ? (val('custoManual') || 0) : p3d.total;
+    ['filamento', 'gramas', 'horas', 'watts', 'kwh', 'perdas', 'embalagem', 'maoObra'].forEach(function (id) {
+      $(id).disabled = modo === 'manual';
+      $(id).parentNode.style.opacity = modo === 'manual' ? '.45' : '1';
+    });
+    $('custoManual').disabled = modo !== 'manual';
+    $('custoManual').parentNode.style.opacity = modo === 'manual' ? '1' : '.45';
+
+    $('custoRes').innerHTML = modo === 'manual'
+      ? '<div class="linha total"><span>Custo por peça</span><span>' + brl(custo) + '</span></div>'
+      : '<div class="linha"><span>Filamento</span><span>' + brl(p3d.filamento) + '</span></div>' +
+        '<div class="linha"><span>Energia</span><span>' + brl(p3d.energia) + '</span></div>' +
+        '<div class="linha"><span>Perdas e falhas</span><span>' + brl(p3d.perdas) + '</span></div>' +
+        '<div class="linha"><span>Embalagem + mão de obra</span><span>' + brl((val('embalagem') || 0) + (val('maoObra') || 0)) + '</span></div>' +
+        '<div class="linha total"><span>Custo por peça</span><span>' + brl(p3d.total) + '</span></div>';
+
+    var alvo = val('margem') || 0;
+    var qtd = val('qtd') || 0;
+    var sugerido = custo > 0 ? precoParaMargem(custo, alvo, s) : undefined;
+    var sugeridoCharme = num(sugerido) ? precoCharme(sugerido) : undefined;
+    var minimo = custo > 0 ? precoParaMargem(custo, 0, s) : undefined;
+    var cheio = num(sugeridoCharme) ? precoCheio(sugeridoCharme, val('promo') || 0) : null;
+
+    if (!precoManual) $('preco').value = num(sugeridoCharme) ? Math.round(sugeridoCharme * 100) / 100 : '';
+    var preco = val('preco');
+
+    $('precos').innerHTML = num(sugeridoCharme)
+      ? '<div class="big"><span>Venda por</span><b>' + brl(sugeridoCharme) + '</b><small>para ' + n2(alvo) + '% de margem</small></div>' +
+        (cheio ? '<div class="big alt"><span>Cadastre por</span><b>' + brl(cheio.cheio) + '</b><small>com ' + n2(val('promo') || 0) + '% de desconto sai por ' + brl(cheio.final) + '</small></div>' : '') +
+        '<div class="big zero"><span>Preço mínimo</span><b>' + brl(precoCharme(minimo)) + '</b><small>abaixo disso você paga para vender</small></div>'
+      : '<p class="bad"><b>Não existe preço possível com esses números.</b> Com esse custo e essa margem, a comissão e o imposto comem tudo. Reduza a margem ou o custo da peça.</p>';
+
+    var r = num(preco) && preco > 0 ? lucro(preco, s, custo) : null;
+    $('precoOrigem').innerHTML = precoManual
+      ? 'Preço digitado por você · <a href="#" id="voltarSugerido">usar o preço sugerido</a>'
+      : 'Preço sugerido pela calculadora. Muda sozinho quando você altera custo, imposto ou margem. Pode digitar outro para conferir.';
+    if (precoManual) $('voltarSugerido').addEventListener('click', function (e) { e.preventDefault(); precoManual = false; calcular(); });
+
+    if (!r) {
+      $('quebra').innerHTML = '<p class="muted">Informe um preço de venda.</p>';
+      $('ads').innerHTML = '<p class="muted">Informe o custo e o preço para ver o ROAS mínimo.</p>';
+      $('alertaFaixa').innerHTML = '';
+      return;
+    }
+    $('quebra').innerHTML =
+      '<div class="linha"><span>Preço de venda</span><span>' + brl(r.preco) + '</span></div>' +
+      '<div class="linha"><span>Comissão Shopee (' + r.band.pct + '% + ' + brl(r.band.fixed) + (s.cpf && r.preco >= 8 ? ' + CPF' : '') + ')</span><span class="bad">− ' + brl(r.fee) + '</span></div>' +
+      '<div class="linha"><span>Imposto (' + n2(s.imposto, 1) + '%)</span><span class="bad">− ' + brl(r.imposto) + '</span></div>' +
+      '<div class="linha"><span>Você recebe da Shopee</span><span>' + brl(r.recebe) + '</span></div>' +
+      '<div class="linha"><span>Custo da peça</span><span class="bad">− ' + brl(r.custo) + '</span></div>' +
+      '<div class="linha total"><span>Lucro por peça</span><span class="' + (r.lucro < 0 ? 'bad' : 'good') + '">' + brl(r.lucro) + '</span></div>' +
+      '<div class="linha"><span>Margem</span><b>' + pct(r.margem) + '</b></div>' +
+      (qtd ? '<div class="linha"><span>Lucro com ' + n2(qtd) + ' vendas no mês</span><b class="' + (r.lucro < 0 ? 'bad' : 'good') + '">' + brl(r.lucro * qtd) + '</b></div>' +
+             '<div class="linha"><span>Faturamento no mês</span><span>' + brl(r.preco * qtd) + '</span></div>' : '');
+
+    var arm = armadilha(r.preco, s);
+    $('alertaFaixa').innerHTML = arm
+      ? '<div class="alerta"><b>Faixa ruim de preço.</b> Cobrando ' + brl(r.preco) + ' você recebe menos do que cobrando ' + brl(arm.ref) + ', porque a taxa fixa da Shopee sobe a partir de ' + brl(arm.de) + '. Fique em ' + brl(arm.ref) + ' ou passe de ' + brl(arm.ate) + '.</div>'
+      : '';
+
+    var m = metricasAds(r.preco, s, custo, { margemAlvo: alvo, roas: val('roas'), conv: val('conv') });
+    if (!m || !m.roasMinimo) {
+      $('ads').innerHTML = '<p class="bad"><b>A ' + brl(r.preco) + ' o produto já sai no prejuízo antes de qualquer anúncio.</b> Acerte o preço antes de pensar em Ads.</p>';
+      return;
+    }
+    var min = m.roasLucro, meta = m.roasAlvo;
+    var topo = Math.max((meta || min || 2) * 1.5, (num(m.roas) ? m.roas : 0) * 1.1, (min || 1) * 2);
+    var pos = function (x) { return Math.min(100, Math.max(0, x / topo * 100)); };
+    var cor = m.situacao === 'lucro' ? 'good' : m.situacao === 'prejuizo' ? 'bad' : '';
+    var regua = min ? '<div class="regua">' +
+        '<i class="r1" style="width:' + pos(min) + '%">prejuízo</i>' +
+        '<i class="r2' + (meta ? '' : ' fim') + '" style="width:' + ((meta ? pos(meta) : 100) - pos(min)) + '%">' + (meta ? 'lucro pequeno' : 'lucro') + '</i>' +
+        (meta ? '<i class="r3" style="width:' + (100 - pos(meta)) + '%">meta</i>' : '') +
+        (num(m.roas) ? (function () {
+          var x = pos(m.roas);
+          // Perto das bordas o rótulo sai do cartão: encosta no canto em vez de centralizar.
+          var estilo = x < 20 ? 'left:0;align-items:flex-start' : x > 80 ? 'right:0;align-items:flex-end' : 'left:' + x + '%';
+          var traco = x < 20 ? 'margin-left:' + x + '%' : x > 80 ? 'margin-right:' + (100 - x) + '%' : '';
+          return '<div class="marca ' + cor + '" style="transform:none;' + estilo + '"><em>sua campanha: ' + n2(m.roas, 2) + '</em><u style="' + traco + '"></u></div>';
+        })() : '') +
+      '</div><div class="escala">' + (pos(min) > 12 ? '<span>0</span>' : '') + '<span style="left:' + pos(min) + '%">' + n2(min, 2) + '</span>' +
+        (meta ? '<span style="left:' + pos(meta) + '%">' + n2(meta, 2) + '</span>' : '') + '</div>' : '';
+
+    var N = 10;
+    var lista = [];
+    var baixo = min ? Math.max(1, Math.floor(min * 0.7 * 10) / 10) : undefined;
+    [[num(m.roas) && min && m.roas < min ? undefined : baixo, 'ROAS baixo'], [min, 'ROAS mínimo'], [meta, 'ROAS meta'], [num(m.roas) ? m.roas : undefined, 'o seu ROAS']]
+      .forEach(function (par) {
+        if (!num(par[0]) || par[0] <= 0) return;
+        if (lista.some(function (x) { return Math.abs(x.c.roas - par[0]) < 0.005; })) return;
+        lista.push({ nome: par[1], c: cenario(m, par[0], N) });
+      });
+    lista.sort(function (a, b) { return a.c.roas - b.c.roas; });
+
+    $('ads').innerHTML =
+      '<div class="destaques">' +
+        '<div class="big"><span>ROAS mínimo da campanha</span><b class="bad">' + n2(min, 2) + '</b><small>abaixo disso, cada venda vinda do anúncio dá prejuízo</small></div>' +
+        (meta ? '<div class="big"><span>ROAS para mirar</span><b class="good">' + n2(meta, 2) + '</b><small>mantém ' + n2(alvo) + '% de margem: sobram ' + brl(alvo / 100 * r.preco) + ' por venda</small></div>'
+              : '<div class="big zero"><span>Meta de ' + n2(alvo) + '% com Ads</span><b>não cabe</b><small>a margem do preço (' + pct(m.margemContribuicao, 0) + ') já é menor que a meta sem anunciar</small></div>') +
+      '</div>' + regua +
+      (num(m.roas)
+        ? '<div class="veredito ' + cor + '"><b class="' + cor + '">Sua campanha (ROAS ' + n2(m.roas, 2) + '): ' + (m.situacao === 'lucro' ? 'está dando lucro' : m.situacao === 'prejuizo' ? 'está dando prejuízo' : 'está no empate') + '.</b>' +
+          '<p>Gasta ' + brl(m.gastoPorVenda) + ' de anúncio por venda e ' + (m.lucroComAds >= 0 ? 'sobram ' : 'você perde ') + '<b>' + brl(Math.abs(m.lucroComAds)) + '</b> por venda (' + pct(m.margemComAds) + ')' + (qtd ? ' · ' + brl(m.lucroComAds * qtd) + ' no mês se as ' + n2(qtd) + ' vendas vierem do Ads' : '') + '.</p>' +
+          (m.situacao === 'prejuizo' ? '<p>Para parar de perder, o ROAS precisa chegar a <b>' + n2(min, 2) + '</b>: melhore fotos e título, pause palavras-chave caras ou baixe o lance.</p>' : '') +
+        '</div>'
+        : '<p class="hint">Preencha o <b>ROAS atual</b> ao lado para saber se a sua campanha dá lucro.</p>') +
+      '<h3>Exemplo: uma campanha que trouxe ' + N + ' vendas</h3>' +
+      '<p class="hint">' + N + ' vendas de ' + brl(r.preco) + ' = <b>' + brl(N * r.preco) + ' vendidos</b>. Sem anúncio, essas vendas deixariam <b>' + brl(N * m.lucroSemAds) + '</b>. O gasto da campanha sai dessa sobra:</p>' +
+      '<table><thead><tr><th>ROAS da campanha</th><th>Gastou no anúncio</th><th>Resultado das ' + N + ' vendas</th><th>Por venda</th></tr></thead><tbody>' +
+      lista.map(function (x) {
+        var k = x.c.situacao === 'lucro' ? 'good' : x.c.situacao === 'prejuizo' ? 'bad' : '';
+        var txt = x.c.situacao === 'lucro' ? 'sobra ' + brl(x.c.sobra) : x.c.situacao === 'prejuizo' ? 'perde ' + brl(-x.c.sobra) : 'empata';
+        return '<tr><td><b>' + n2(x.c.roas, 2) + '</b> <span class="muted">' + x.nome + '</span></td><td class="n">' + brl(x.c.gasto) + '</td><td class="n ' + k + '"><b>' + txt + '</b></td><td class="n ' + k + '">' + brl(x.c.porVenda) + '</td></tr>';
+      }).join('') + '</tbody></table>' +
+      '<details><summary>Mais números (gasto por venda, ACOS, custo por clique)</summary>' +
+        (num(m.gastoAlvo) ? '<div class="linha"><span>Gasto de anúncio por venda para manter ' + n2(alvo) + '%</span><b>' + brl(m.gastoAlvo) + '</b></div>' : '') +
+        '<div class="linha"><span>Limite do empate por venda (lucro zero)</span><b>' + brl(m.gastoMaximo) + '</b></div>' +
+        '<div class="linha"><span>ACOS máximo (gasto ÷ venda) no empate</span><b>' + pct(m.acosMaximo, 0) + '</b></div>' +
+        (num(m.cpcAlvo) ? '<div class="linha"><span>Com ' + n2(m.conv * 100, 1) + '% de conversão, pague por clique até</span><b>' + brl(m.cpcAlvo) + '</b> <span class="muted">(teto ' + brl(m.cpcMaximo) + ')</span></div>'
+                        : '<p class="hint">Informe a conversão do anúncio para ver quanto pagar por clique.</p>') +
+        '<p class="hint">ACOS é o contrário do ROAS: quanto das vendas foi gasto em anúncio (ROAS 4 = ACOS 25%).</p>' +
+      '</details>';
+  }
+
+  campos.forEach(function (id) { $(id).addEventListener('input', function () { if (id === 'preco') precoManual = $(id).value !== ''; calcular(); }); });
+  $('modoCusto').addEventListener('change', calcular);
+  $('cpf').addEventListener('change', calcular);
+  calcular();
+})();
+</script>
+
+</body>
+</html>
