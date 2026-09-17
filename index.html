@@ -6,7 +6,7 @@
   <title>Garimpa3D – Descubra o que vende na Shopee</title>
   <meta name="description" content="Extensão para Chrome que mostra vendas por mês, cores campeãs, lucro real e títulos que vendem na Shopee. Feita para quem vende peças impressas em 3D.">
   <style>
-    :root { --ink: #1b1b1f; --muted: #62626e; --line: #ececf2; --soft: #f7f7fa; --accent: #ee4d2d; --accent-2: #ff7a45; --good: #16a34a; --bg: #ffffff; }
+    :root { --ink: #222923; --muted: #62685f; --line: #dcded5; --soft: #f0f1eb; --accent: #bd421f; --good: #3f6b4d; --bg: #fafaf6; }
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--ink); font: 17px/1.6 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
     a { color: inherit; }
@@ -15,7 +15,7 @@
     header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .logo { font-weight: 800; font-size: 20px; text-decoration: none; }
     .logo span { color: var(--accent); }
-    .btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; padding: 14px 26px; border-radius: 12px; box-shadow: 0 8px 24px rgba(238,77,45,.28); transition: transform .15s; }
+    .btn { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-weight: 700; padding: 14px 26px; border-radius: 5px; box-shadow: none; transition: transform .15s; }
     .btn:hover { transform: translateY(-2px); }
     .btn.sm { padding: 9px 16px; font-size: 15px; box-shadow: none; }
     .btn.ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); box-shadow: none; }
@@ -29,7 +29,7 @@
     .cta-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .micro { color: var(--muted); font-size: 14px; margin-top: 14px; }
 
-    .mock { background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 30px 80px rgba(20,20,40,.14); overflow: hidden; }
+    .mock { background: #fff; border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 30px 80px rgba(20,20,40,.14); overflow: hidden; }
     .mock-head { background: var(--accent); color: #fff; padding: 12px 16px; font-weight: 800; display: flex; justify-content: space-between; }
     .mock-head small { font-weight: 500; opacity: .9; }
     .mock-body { padding: 16px; }
@@ -53,14 +53,14 @@
     .sub { text-align: center; color: var(--muted); max-width: 680px; margin: 0 auto 40px; }
 
     .pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-    .pain { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+    .pain { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 22px; }
     .pain .ico { font-size: 28px; }
     .pain h3 { margin: 8px 0 6px; font-size: 19px; }
     .pain p { margin: 0; color: var(--muted); font-size: 16px; }
 
     .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-    .feat { display: flex; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
-    .feat .ico { flex: none; width: 46px; height: 46px; border-radius: 12px; background: #fff1ec; display: grid; place-items: center; font-size: 22px; }
+    .feat { display: flex; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 20px; }
+    .feat .ico { flex: none; width: 46px; height: 46px; border-radius: 5px; background: #fff1ec; display: grid; place-items: center; font-size: 22px; }
     .feat h3 { margin: 0 0 4px; font-size: 18px; }
     .feat p { margin: 0; color: var(--muted); font-size: 15.5px; }
 
@@ -71,8 +71,8 @@
     .step p { margin: 0; color: var(--muted); font-size: 15.5px; }
 
     .plans { display: grid; grid-template-columns: repeat(2, minmax(0, 360px)); gap: 20px; justify-content: center; }
-    .plan { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px; text-align: center; }
-    .plan.best { border: 2px solid var(--accent); box-shadow: 0 20px 50px rgba(238,77,45,.16); }
+    .plan { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 28px; text-align: center; }
+    .plan.best { border: 2px solid var(--accent); box-shadow: none; }
     .ribbon { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 999px; white-space: nowrap; }
     .plan h3 { margin: 0; font-size: 20px; }
     .price { font-size: 42px; font-weight: 800; margin: 12px 0 0; letter-spacing: -1px; }
@@ -84,12 +84,12 @@
     .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--good); font-weight: 800; }
     .plan .btn { display: block; }
 
-    .guarantee { display: flex; gap: 18px; align-items: center; max-width: 720px; margin: 36px auto 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; }
+    .guarantee { display: flex; gap: 18px; align-items: center; max-width: 720px; margin: 36px auto 0; background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 20px 24px; }
     .seal { flex: none; width: 76px; height: 76px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; text-align: center; font-weight: 800; line-height: 1.05; font-size: 15px; }
     .seal b { font-size: 26px; display: block; }
 
     .compare-wrap { overflow-x: auto; max-width: 860px; margin: 0 auto; }
-    .compare { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; font-size: 16px; }
+    .compare { width: 100%; border-collapse: separate; border-spacing: 0; background: #fff; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; font-size: 16px; }
     .compare th, .compare td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
     .compare tr:last-child td { border-bottom: 0; }
     .compare thead th { background: var(--soft); font-size: 15px; }
@@ -99,7 +99,7 @@
     .compare .no { color: var(--muted); }
     .compare-note { text-align: center; color: var(--muted); font-size: 13px; margin-top: 12px; }
 
-    details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 20px; margin: 0 auto 10px; max-width: 760px; }
+    details { background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: 16px 20px; margin: 0 auto 10px; max-width: 760px; }
     summary { cursor: pointer; font-weight: 700; }
     details p { color: var(--muted); margin: 10px 0 0; }
 
@@ -116,17 +116,119 @@
       .hero { padding-top: 40px; }
       .guarantee { flex-direction: column; text-align: center; }
     }
+
+    html { scroll-padding-top: 90px; }
+    .icon { width: 26px; height: 26px; flex: none; vertical-align: middle; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+    header { background: rgba(250,250,246,.97); }
+    header .wrap { height: 76px; }
+    .logo { display: inline-flex; align-items: center; gap: 9px; letter-spacing: -.7px; }
+    .logo .icon { width: 32px; height: 32px; color: var(--accent); }
+    .logo span { color: inherit; }
+    .header-actions { display: flex; gap: 24px; align-items: center; }
+    .header-link { font-size: 14px; font-weight: 600; text-underline-offset: 5px; }
+    .hero { padding: 80px 0; background: none; border-bottom: 1px solid var(--line); }
+    .hero .wrap { gap: 56px; }
+    .tag { padding: 0; background: none; color: var(--muted); border-radius: 0; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; }
+    h1 { font-size: clamp(38px, 4.7vw, 58px); font-weight: 700; letter-spacing: -2.3px; line-height: 1.06; margin: 22px 0; }
+    .lead { font-size: 17px; line-height: 1.7; }
+    .btn { font-size: 15px; padding: 13px 22px; }
+    .btn:hover { transform: none; background: #9e3518; }
+    .btn.ghost:hover { background: var(--soft); }
+    .micro { font-size: 12px; line-height: 1.8; }
+    .mock { box-shadow: 8px 8px 0 #e8e9e0; border-color: #c7ccc0; }
+    .mock-head { background: #29392e; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; }
+    .mock-brand { display: inline-flex; align-items: center; gap: 7px; }
+    .mock-brand .icon { width: 20px; height: 20px; }
+    .mock-head small { font-size: 11px; }
+    .mock-body { padding: 20px; }
+    .score { background: #eff3eb; border-radius: 3px; }
+    .kpi { border-radius: 3px; }
+    .kpi.hl { background: #f5eee5; }
+    section { padding: 64px 0; }
+    h2 { text-align: left; letter-spacing: -1px; font-size: clamp(27px, 3.2vw, 36px); font-weight: 650; }
+    .sub { text-align: left; margin: 0 0 36px; max-width: 700px; font-size: 16px; }
+    .pains { gap: 30px; }
+    .pain { background: none; padding: 22px 0 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+    .pain .ico { color: var(--accent); margin-bottom: 16px; }
+    .pain h3 { font-size: 18px; }
+    .features { column-gap: 44px; row-gap: 0; }
+    .feat { background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; padding: 24px 0; gap: 16px; }
+    .feat .ico { width: 30px; height: 30px; background: none; color: var(--accent); border-radius: 0; }
+    .feat h3 { font-size: 17px; }
+    .step { text-align: left; padding: 20px 0; border-top: 1px solid var(--line); }
+    .step::before { content: '0' counter(s); display: block; margin: 0 0 16px; width: auto; height: auto; color: var(--accent); background: none; border-radius: 0; font-size: 14px; font-variant-numeric: tabular-nums; }
+    .plans { grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: 28px; }
+    .plan { text-align: left; padding: 30px; }
+    .plan.best { border: 1px solid #29392e; border-top: 4px solid #29392e; }
+    .ribbon { position: static; display: inline-block; transform: none; background: none; color: var(--accent); padding: 0; border-radius: 0; margin-bottom: 16px; font-size: 12px; letter-spacing: .3px; }
+    .price { line-height: 1.2; margin-bottom: 8px; }
+    .price small { display: block; font-size: 14px; margin-top: 8px; }
+    .plan li { padding-left: 22px; }
+    .plan li::before { content: ''; width: 10px; height: 6px; border-left: 1.5px solid var(--good); border-bottom: 1.5px solid var(--good); transform: rotate(-45deg); top: 14px; }
+    .plan .btn { text-align: center; }
+    .guarantee { max-width: none; margin-top: 28px; padding: 24px 0; border: 0; border-top: 1px solid var(--line); background: none; border-radius: 0; font-size: 15px; }
+    .seal { width: 64px; height: 64px; border-radius: 4px; background: #e3e9dc; color: #29392e; font-size: 11px; }
+    .compare-wrap { max-width: none; }
+    .compare thead th.us { background: #29392e; }
+    .compare td.us { background: #eff3eb; }
+    details { max-width: none; background: none; border: 0; border-top: 1px solid var(--line); border-radius: 0; margin: 0; padding: 20px 0; }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { font-size: 16px; }
+    .final { text-align: left; background: #29392e; border-radius: 6px; padding: 44px; }
+    .final .btn { color: #29392e; }
+    .final .btn:hover { background: #e3e9dc; }
+    footer { text-align: left; border-top: 1px solid var(--line); font-size: 12px; }
+    footer .icon { width: 20px; height: 20px; margin-right: 5px; }
+    @media (max-width: 860px) {
+      .hero .wrap, .plans { grid-template-columns: 1fr; }
+      .hero { padding: 44px 0 56px; }
+      .hero .wrap { gap: 36px; }
+      .guarantee { flex-direction: row; text-align: left; align-items: flex-start; }
+      section { padding: 44px 0; }
+    }
+    @media (max-width: 480px) {
+      .wrap { padding: 0 18px; }
+      header .wrap { height: 68px; }
+      .logo { font-size: 18px; gap: 5px; }
+      .logo .icon { width: 25px; height: 25px; }
+      .header-actions { gap: 10px; }
+      .header-link { max-width: 74px; font-size: 11px; line-height: 1.3; }
+      .btn.sm { padding: 8px 11px; font-size: 12px; }
+      h1 { letter-spacing: -1.5px; }
+      .mock-body { padding: 12px; }
+      .kpi { padding: 8px; }
+      .kpi b { font-size: 16px; }
+      .kpi span { font-size: 9px; }
+      .plan { padding: 24px; }
+      .compare { min-width: 620px; }
+      .final { padding: 28px 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+
+    /* Ícones de funções e benefícios; a marca mantém suas dimensões. */
+    .pain .ico, .feat .ico {
+      display: flex; align-items: center; justify-content: center;
+      flex: 0 0 44px; width: 44px; height: 44px;
+      color: #a53d21; background: #f3e9e1; border-radius: 9px;
+      font-size: 0; line-height: 1;
+    }
+    .pain .ico .icon, .feat .ico .icon {
+      display: block; flex: 0 0 28px; width: 28px; height: 28px;
+      min-width: 28px; overflow: visible;
+    }
   </style>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#">⛏ Garimpa<span>3D</span></a>
-    <span style="display:flex;gap:10px;align-items:center"><a href="calculadora.html" style="text-decoration:none;font-weight:700;font-size:15px">Calculadora grátis</a><a class="btn sm" href="#planos">Assinar</a></span>
+    <a class="logo" href="#">⛏ <span>Garimpa<span style="color:var(--accent)">3D</span></span></a>
+    <nav class="header-actions" aria-label="Navegação principal"><a class="header-link" href="calculadora.html">Calculadora grátis</a><a class="btn sm" href="#planos">Ver planos</a></nav>
   </div>
 </header>
 
+<main>
 <section class="hero">
   <div class="wrap">
     <div>
@@ -141,7 +243,7 @@
     </div>
 
     <div class="mock" aria-label="Exemplo do painel do Garimpa3D">
-      <div class="mock-head">⛏ Garimpa3D <small>busca: "suporte headset mesa"</small></div>
+      <div class="mock-head"><span class="mock-brand">⛏ Garimpa3D</span> <small>busca: "suporte headset mesa"</small></div>
       <div class="mock-body">
         <div class="score"><b>7,4</b><div><strong>Boa oportunidade</strong><br><span style="font-size:13px;color:#62626e">Vale a pena entrar? (nota 0–10)</span></div></div>
         <div class="kpis">
@@ -168,9 +270,9 @@
     <h2>Chega de imprimir no escuro</h2>
     <p class="sub">Quem começa a vender na Shopee costuma errar nas mesmas três coisas.</p>
     <div class="pains">
-      <div class="pain"><div class="ico">🧱</div><h3>Estoque parado</h3><p>Imprime 6 cores achando que todas vendem e descobre que só 2 saem.</p></div>
-      <div class="pain"><div class="ico">💸</div><h3>Lucro que não existe</h3><p>Vende por R$ 30, mas depois da comissão, do imposto e do filamento quase não sobra nada.</p></div>
-      <div class="pain"><div class="ico">🎯</div><h3>Nicho errado</h3><p>Entra num produto com centenas de concorrentes grandes e o anúncio nunca aparece.</p></div>
+      <div class="pain"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 8v12H3V8M2 4h20v4H2zM9 12h6"/></svg></div><h3>Estoque parado</h3><p>Imprime 6 cores achando que todas vendem e descobre que só 2 saem.</p></div>
+      <div class="pain"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 12h.01M18 12h.01"/></svg></div><h3>Lucro que não existe</h3><p>Vende por R$ 30, mas depois da comissão, do imposto e do filamento quase não sobra nada.</p></div>
+      <div class="pain"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7"/><path d="m15 15 6 6M7 10h6"/></svg></div><h3>Nicho errado</h3><p>Entra num produto com centenas de concorrentes grandes e o anúncio nunca aparece.</p></div>
     </div>
   </div>
 </section>
@@ -180,16 +282,16 @@
     <h2>Tudo o que você precisa, direto na Shopee</h2>
     <p class="sub">Abra a Shopee, pesquise um produto e o Garimpa3D analisa tudo para você.</p>
     <div class="features">
-      <div class="feat"><div class="ico">🔥</div><div><h3>Vendas por mês em cada anúncio</h3><p>Selos na busca com vendas, faturamento, lucro por unidade e idade do anúncio.</p></div></div>
-      <div class="feat"><div class="ico">🎯</div><div><h3>Vale a pena entrar?</h3><p>Nota de 0 a 10 para cada nicho: procura, concorrência, espaço para novatos e margem.</p></div></div>
-      <div class="feat"><div class="ico">🥊</div><div><h3>Saturação do mercado</h3><p>Veja se a busca está aberta, disputada ou dominada por poucas lojas, quanto dos anúncios é pago e se anúncios novos já estão vendendo.</p></div></div>
-      <div class="feat"><div class="ico">📈</div><div><h3>Produtos em alta</h3><p>Repita suas buscas e veja quais produtos estão vendendo mais a cada semana, antes de todo mundo copiar.</p></div></div>
-      <div class="feat"><div class="ico">🎨</div><div><h3>Cores e variações campeãs</h3><p>Descubra quais cores e tamanhos realmente vendem antes de imprimir.</p></div></div>
-      <div class="feat"><div class="ico">🧮</div><div><h3>Lucro real</h3><p>Comissão da Shopee 2026 por faixa de preço, imposto e o custo da sua peça 3D: filamento, energia e perdas.</p></div></div>
-      <div class="feat"><div class="ico">✍️</div><div><h3>Título e descrição que vendem</h3><p>Títulos montados com as palavras dos anúncios que mais vendem e descrição pronta para copiar.</p></div></div>
-      <div class="feat"><div class="ico">⚠️</div><div><h3>Reclamações dos concorrentes</h3><p>As avaliações negativas agrupadas por tema, com o que fazer melhor no seu anúncio.</p></div></div>
-      <div class="feat"><div class="ico">🔑</div><div><h3>Palavras-chave com volume</h3><p>Volume de busca e lance sugerido da ferramenta de anúncios da Shopee.</p></div></div>
-      <div class="feat"><div class="ico">🤖</div><div><h3>Copiar para IA</h3><p>Um clique copia todos os dados prontos para colar no ChatGPT, Claude ou Gemini.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M9 16v-5m5 5V7m5 9V4"/></svg></div><div><h3>Vendas por mês em cada anúncio</h3><p>Selos na busca com vendas, faturamento, lucro por unidade e idade do anúncio.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><div><h3>Vale a pena entrar?</h3><p>Nota de 0 a 10 para cada nicho: procura, concorrência, espaço para novatos e margem.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/></svg></div><div><h3>Saturação do mercado</h3><p>Veja se a busca está aberta, disputada ou dominada por poucas lojas, quanto dos anúncios é pago e se anúncios novos já estão vendendo.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3 17 6-6 4 4 8-10m-6 0h6v6"/></svg></div><div><h3>Produtos em alta</h3><p>Repita suas buscas e veja quais produtos estão vendendo mais a cada semana, antes de todo mundo copiar.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><div><h3>Cores e variações campeãs</h3><p>Descubra quais cores e tamanhos realmente vendem antes de imprimir.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></div><div><h3>Lucro real</h3><p>Comissão da Shopee 2026 por faixa de preço, imposto e o custo da sua peça 3D: filamento, energia e perdas.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Zm0 0v6h6M8 13h8M8 17h5"/></svg></div><div><h3>Título e descrição que vendem</h3><p>Títulos montados com as palavras dos anúncios que mais vendem e descrição pronta para copiar.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 15a2 2 0 0 1-2 2H7l-5 4V5a2 2 0 0 1 2-2h15a2 2 0 0 1 2 2ZM7 8h9M7 12h6"/></svg></div><div><h3>Reclamações dos concorrentes</h3><p>As avaliações negativas agrupadas por tema, com o que fazer melhor no seu anúncio.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="7.5"/><path d="m16 16 5 5"/></svg></div><div><h3>Palavras-chave com volume</h3><p>Volume de busca e lance sugerido da ferramenta de anúncios da Shopee.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1"/></svg></div><div><h3>Copiar para IA</h3><p>Um clique copia todos os dados prontos para colar no ChatGPT, Claude ou Gemini.</p></div></div>
     </div>
   </div>
 </section>
@@ -207,7 +309,7 @@
           <tr><th>Cores que vendem</th><td class="us"><span class="yes">✓</span> Ranking de cores e variações, para imprimir só o que sai</td><td class="no">Raramente separam por cor</td></tr>
           <tr><th>Reclamações de peças</th><td class="us"><span class="yes">✓</span> Quebra, tamanho, acabamento e cor diferente da foto, com o que fazer melhor</td><td class="no">Mostram só a nota média</td></tr>
           <tr><th>Saturação e produtos em alta</th><td class="us"><span class="yes">✓</span> Lojas que dominam a busca, peso dos anúncios pagos e vendas subindo</td><td>Costumam ter</td></tr>
-          <tr><th>Preço</th><td class="us">R$ 49,90/mês ou R$ 499/ano</td><td class="no">Planos completos costumam custar bem mais</td></tr>
+          <tr><th>Preço</th><td class="us">R$ 49,90/mês ou R$ 197 no Vitalício, em pagamento único</td><td class="no">Planos completos costumam custar bem mais</td></tr>
         </tbody>
       </table>
     </div>
@@ -218,7 +320,7 @@
 <section>
   <div class="wrap">
     <h2>Comece em 3 passos</h2>
-    <p class="sub">Sem instalar programa e sem configuração.</p>
+    <p class="sub">Instale a extensão no navegador e entre com o e-mail da compra.</p>
     <div class="steps">
       <div class="step"><h3>Assine</h3><p>Escolha o plano mensal ou o vitalício. Pix, cartão ou boleto.</p></div>
       <div class="step"><h3>Instale e entre</h3><p>Instale a extensão e entre com o e-mail da compra e o código que chega por e-mail.</p></div>
@@ -230,7 +332,7 @@
 <section class="alt" id="planos">
   <div class="wrap">
     <h2>Escolha seu plano</h2>
-    <p class="sub">As mesmas funções nos dois planos. O Vitalício inclui as aulas e os bônus para você vender mais rápido.</p>
+    <p class="sub">Todas as funções da extensão nos dois planos. No Vitalício, você também recebe videoaulas para usar a ferramenta, criar anúncios e configurar sua primeira campanha de Ads, além de três bônus.</p>
     <div class="plans">
       <div class="plan">
         <h3>Mensal</h3>
@@ -253,11 +355,12 @@
         <ul>
           <li><b>Acesso vitalício</b> à extensão e às atualizações</li>
           <li>Até 2 computadores (1 por vez)</li>
-          <li><b>Aula 1:</b> como escolher seus primeiros produtos com o Garimpa3D</li>
-          <li><b>Aula 2:</b> seu primeiro anúncio com o prompt do sistema (título, descrição e fotos)</li>
-          <li><b>Aula 3:</b> sua primeira campanha de Shopee Ads sem prejuízo</li>
-          <li><b>Prompt de fotos e campanha UGC</b> no padrão de vendas da Shopee, com roteiro de vídeo para Shopee Vídeo</li>
-          <li><b>Planilha de precificação e controle</b> com comissão Shopee 2026, lucro por peça e estoque de filamento</li>
+          <li><b>Videoaula:</b> como usar o Garimpa3D</li>
+          <li><b>Videoaula:</b> como criar seus anúncios na Shopee</li>
+          <li><b>Videoaula:</b> como configurar sua primeira campanha de Shopee Ads</li>
+          <li><b>Bônus 1 — Planilha de controle e precificação:</b> organize suas vendas e calcule os preços dos seus produtos</li>
+          <li><b>Bônus 2 — Calculadora completa online:</b> calcule preços, custos e margens para suas vendas</li>
+          <li><b>Bônus 3 — Biblioteca de arquivos STL:</b> acesso a uma pasta no Google Drive com vários modelos para impressão 3D</li>
           <li>Suporte por e-mail</li>
         </ul>
         <a class="btn" href="https://pay.kiwify.com.br/8T07aas">Quero o vitalício</a>
@@ -274,13 +377,14 @@
 <section>
   <div class="wrap">
     <h2>Perguntas frequentes</h2>
-    <p class="sub">&nbsp;</p>
+    <p class="sub">Sobre o acesso, os planos e o uso da extensão.</p>
     <details><summary>Funciona para qualquer produto ou só para 3D?</summary><p>Funciona em qualquer busca da Shopee. Ele já vem com o nicho "Impressão 3D" configurado e tem a calculadora de custo de peça impressa, mas você pode criar outros nichos.</p></details>
     <details><summary>Em quais navegadores funciona?</summary><p>Google Chrome e navegadores baseados nele: Microsoft Edge, Brave e Opera, no computador.</p></details>
     <details><summary>Os números de vendas são exatos?</summary><p>Vendas por mês e total vendido vêm da própria Shopee. Faturamento, lucro dos concorrentes e vendas por variação são estimativas calculadas a partir desses dados.</p></details>
     <details><summary>Posso usar em mais de um computador?</summary><p>Sim, em até 2 computadores cadastrados, um de cada vez. A assinatura é pessoal e não pode ser compartilhada.</p></details>
     <details><summary>A Shopee pode bloquear minha conta?</summary><p>O Garimpa3D só lê as informações que a própria Shopee já mostra na tela enquanto você navega. Ele não faz ações automáticas na sua conta, como seguir pessoas em massa.</p></details>
     <details><summary>O que significa vitalício?</summary><p>Você paga uma vez e usa o Garimpa3D sem mensalidade, com todas as atualizações, enquanto o produto for oferecido. Se um dia ele for encerrado, avisamos com pelo menos 90 dias de antecedência. As aulas e a planilha ficam com você.</p></details>
+    <details><summary>O que está incluído no Vitalício além da extensão?</summary><p>Videoaulas de como usar o Garimpa3D, criar anúncios na Shopee e configurar sua primeira campanha de Shopee Ads. Você também recebe uma planilha de controle e cálculo de preços para vendas, uma calculadora completa online e acesso a uma pasta no Google Drive com vários arquivos STL para impressão 3D.</p></details>
     <details><summary>Até quando vale o preço de fundador?</summary><p>Até acabarem as 100 vagas. Depois o Vitalício passa a custar R$ 397.</p></details>
     <details><summary>Como cancelo?</summary><p>O Mensal é cancelado pela própria Kiwify, a qualquer momento, sem multa; o acesso continua até o fim do mês pago. Nos dois planos você tem 7 dias de garantia com reembolso integral.</p></details>
   </div>
@@ -295,6 +399,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
