@@ -10,7 +10,7 @@
 <main>
   <p class="brand">⛏ Garimpa3D</p>
   <h1>Política de Privacidade</h1>
-  <p class="meta">Última atualização: 14 de setembro de 2026</p>
+  <p class="meta">Última atualização: 19 de setembro de 2026</p>
 
   <div class="aviso">O Garimpa3D é uma ferramenta independente e <b>não é afiliado, patrocinado ou endossado pela Shopee</b>. "Shopee" é marca de seus respectivos titulares.</div>
 
@@ -24,7 +24,7 @@
 
   <h2>2. Resumo em 30 segundos</h2>
   <ul>
-    <li>As análises que você faz na Shopee (produtos, lojas, avaliações, palavras-chave) <b>ficam só no seu navegador</b>. Não enviamos esse conteúdo para nossos servidores.</li>
+    <li>As análises da Shopee ficam no navegador. Se você clicar em <b>Gerar anúncio com Gemini</b>, os dados selecionados do produto, referências e planejamento passam pelo Supabase e são enviados ao Google para gerar o texto.</li>
     <li>Para controlar a assinatura, guardamos seu <b>e-mail</b>, um <b>identificador do computador</b> e registros de acesso (<b>data, IP e navegador</b>).</li>
     <li>O pagamento é feito pela <b>Kiwify</b>. Não recebemos nem guardamos dados de cartão.</li>
     <li><b>Não vendemos</b> seus dados.</li>
@@ -38,10 +38,12 @@
     <tr><td>Identificador aleatório do computador e nome do navegador/sistema (ex.: "Chrome no Windows")</td><td>Gerado pela extensão</td><td>Seu navegador e nosso servidor</td></tr>
     <tr><td>Registros de acesso: data e hora, endereço IP, navegador (user agent) e ação (entrar, renovar, sair)</td><td>Gerados ao verificar a licença</td><td>Nosso servidor</td></tr>
     <tr><td>Código de login enviado por e-mail</td><td>Gerado no login</td><td>Provedor de autenticação e de e-mail</td></tr>
-    <tr><td>Dados públicos da Shopee lidos durante a sua navegação (produtos, preços, vendas, lojas, avaliações) e palavras-chave da Central do Vendedor</td><td>Páginas que você abre</td><td><b>Somente no seu navegador</b> (armazenamento local da extensão)</td></tr>
-    <tr><td>Suas configurações (custos, impostos, nichos)</td><td>Você</td><td><b>Somente no seu navegador</b></td></tr>
+    <tr><td>Dados públicos da Shopee lidos durante a sua navegação (produtos, preços, vendas, lojas, avaliações) e palavras-chave da Central do Vendedor</td><td>Páginas que você abre</td><td><b>No seu navegador</b>; dados selecionados são enviados ao Gemini somente ao solicitar a geração (armazenamento local da extensão)</td></tr>
+    <tr><td>Suas configurações (custos, impostos, nichos)</td><td>Você</td><td><b>No seu navegador</b>; dados selecionados são enviados ao Gemini somente ao solicitar a geração</td></tr>
+    <tr><td>Fichas de custo, planejamentos de produtos e anúncios, limites de acompanhamento e resultados de campanhas (receita, despesas, unidades e períodos)</td><td>Informados por você e observações de produtos durante a navegação</td><td><b>No seu navegador</b>; dados selecionados são enviados ao Gemini somente ao solicitar a geração. Incluídos no backup local quando você o solicita.</td></tr>
   </table>
   <p>A extensão <b>não</b> lê suas senhas, mensagens, dados de pagamento da Shopee ou informações de compradores da sua loja, e não usa cookies de rastreamento nem ferramentas de publicidade.</p>
+  <p>Os prompts são preparados localmente. O botão Gerar anúncio com Gemini envia os dados selecionados ao Google através do Supabase. A navegação e a coleta de anúncios não acionam esse envio. Se você preferir copiar o prompt para outro serviço, confira os dados incluídos e a política desse serviço. Nossa tabela de controle da IA guarda identificador de usuário, pedido e data, sem armazenar o prompt ou a resposta.</p>
 
   <h2>4. Para que usamos e com qual base legal</h2>
   <table>
@@ -57,6 +59,7 @@
   <ul>
     <li><b>Kiwify</b> – processamento do pagamento e da assinatura (tem política de privacidade própria);</li>
     <li><b>Supabase</b> – hospedagem do banco de dados, do login e das funções do servidor;</li>
+    <li><b>Google Gemini (opcional)</b> – quando você clicar em Gerar anúncio com Gemini, enviamos os dados do produto, referências selecionadas, palavras-chave e planejamento de preço/custo para gerar títulos e descrição. Não enviamos senha, token de login ou chave de licença ao Google. O pedido passa pelo Supabase, que verifica o acesso e registra identificador do usuário, identificador do pedido e data para limitar o consumo. Os textos gerados podem ser salvos no planejamento local. O fornecedor pode processar dados no exterior conforme seus termos; consulte <a href="https://ai.google.dev/gemini-api/terms">os termos da API Gemini</a>.</li>
     <li><b>Google (Gmail)</b> – envio do código de acesso.</li>
   </ul>
   <p>Também podemos compartilhar dados quando exigido por lei ou ordem judicial. Alguns fornecedores podem armazenar dados fora do Brasil; nesses casos, exigimos garantias adequadas de proteção (LGPD, art. 33).</p>
@@ -89,3 +92,4 @@
 </main>
 </body>
 </html>
+
