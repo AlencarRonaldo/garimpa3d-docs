@@ -3,8 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garimpa3D – Descubra o que vende na Shopee</title>
-  <meta name="description" content="Extensão para Chrome que mostra vendas por mês, cores campeãs, lucro real e títulos que vendem na Shopee. Feita para quem vende peças impressas em 3D.">
+  <title>Garimpa3D – Descubra o que vende e quanto cobrar na Shopee e no TikTok Shop</title>
+  <meta name="description" content="Extensão para Chrome que mostra vendas por mês, cores campeãs, lucro real, preço para Shopee e TikTok Shop e títulos que vendem. Feita para quem vende peças impressas em 3D.">
+  <meta property="og:title" content="Garimpa3D – o que vende e quanto cobrar">
+  <meta property="og:description" content="Veja em 1 minuto como o Garimpa3D mostra vendas, lucro e o preço certo para Shopee e TikTok Shop.">
+  <meta property="og:image" content="videos/garimpa3d-em-1-minuto.jpg">
+  <meta property="og:type" content="website">
   <style>
     :root { --ink: #222923; --muted: #62685f; --line: #dcded5; --soft: #f0f1eb; --accent: #bd421f; --good: #3f6b4d; --bg: #fafaf6; }
     * { box-sizing: border-box; }
@@ -204,6 +208,17 @@
       .compare { min-width: 620px; }
       .final { padding: 28px 22px; }
     }
+    .video { position: relative; background: #111; border: 1px solid #c7ccc0; border-radius: 6px; overflow: hidden; box-shadow: 8px 8px 0 #e8e9e0; aspect-ratio: 16 / 9; }
+    .video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .video .sound { position: absolute; left: 12px; top: 12px; border: 0; cursor: pointer; background: #29392e; color: #fff; font: 700 14px/1 -apple-system, "Segoe UI", Roboto, Arial, sans-serif; padding: 11px 15px; border-radius: 5px; display: inline-flex; gap: 8px; align-items: center; }
+    .video .sound .icon { width: 18px; height: 18px; }
+    .video .sound:hover { background: var(--accent); }
+    .video .sound:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    .video.playing .sound { display: none; }
+    .video-note { font-size: 12px; color: var(--muted); margin-top: 14px; }
+    .video-wide { max-width: 880px; margin: 0 0 40px; }
+    .new { display: inline-block; margin-left: 8px; font-size: 11px; font-weight: 700; letter-spacing: .8px; text-transform: uppercase; color: var(--accent); vertical-align: 2px; }
+    @media (max-width: 480px) { .video .sound { font-size: 12px; padding: 9px 12px; } }
     @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
 
     /* Ícones de funções e benefícios; a marca mantém suas dimensões. */
@@ -232,35 +247,22 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="tag">Para quem vende peças impressas em 3D na Shopee</span>
+      <span class="tag">Para quem vende peças impressas em 3D na Shopee e no TikTok Shop</span>
       <h1>Descubra o que <em>vende</em> antes de gastar filamento.</h1>
-      <p class="lead">O Garimpa3D é uma extensão para Chrome que mostra, direto na Shopee, quanto cada anúncio vende por mês, as cores campeãs, o lucro real e o título que vende.</p>
+      <p class="lead">O Garimpa3D é uma extensão para Chrome que mostra, direto na Shopee, quanto cada anúncio vende por mês, as cores campeãs e o lucro real. Você informa o peso e o tempo da peça e ele diz quanto cobrar na Shopee e no TikTok Shop.</p>
       <div class="cta-row">
         <a class="btn" href="#planos">Quero garimpar agora</a>
-        <a class="btn ghost" href="#funcoes">Ver funções</a>
+        <a class="btn ghost" href="#funcoes">Ver todas as funções</a>
       </div>
       <p class="micro">Garantia de 7 dias · Cancele quando quiser · Funciona no Chrome, Edge, Brave e Opera</p>
     </div>
 
-    <div class="mock" aria-label="Exemplo do painel do Garimpa3D">
-      <div class="mock-head"><span class="mock-brand">⛏ Garimpa3D</span> <small>busca: "suporte headset mesa"</small></div>
-      <div class="mock-body">
-        <div class="score"><b>7,4</b><div><strong>Boa oportunidade</strong><br><span style="font-size:13px;color:#62626e">Vale a pena entrar? (nota 0–10)</span></div></div>
-        <div class="kpis">
-          <div class="kpi hl"><b>2,1 mil</b><span>Vendas/mês</span></div>
-          <div class="kpi hl"><b>R$ 58 mil</b><span>Faturamento</span></div>
-          <div class="kpi"><b>R$ 27,40</b><span>Preço médio</span></div>
-          <div class="kpi"><b>R$ 8,90</b><span>Lucro/un.</span></div>
-          <div class="kpi"><b>31%</b><span>Margem</span></div>
-          <div class="kpi"><b>38%</b><span>Anúncios pagos</span></div>
-        </div>
-        <div class="bars">
-          <div class="bar-row"><span class="dot" style="background:#111"></span> Preto <div class="bar"><i style="width:48%"></i></div> 48%</div>
-          <div class="bar-row"><span class="dot" style="background:#fff"></span> Branco <div class="bar"><i style="width:31%"></i></div> 31%</div>
-          <div class="bar-row"><span class="dot" style="background:#9aa0a6"></span> Cinza <div class="bar"><i style="width:21%"></i></div> 21%</div>
-        </div>
-        <div class="mock-note">Ilustração do painel com números de exemplo</div>
+    <div>
+      <div class="video" data-video>
+        <video src="videos/garimpa3d-em-1-minuto.mp4" poster="videos/garimpa3d-em-1-minuto.jpg" muted autoplay loop playsinline preload="metadata" aria-label="Vídeo: como o Garimpa3D funciona em 1 minuto"></video>
+        <button class="sound" type="button" aria-label="Assistir ao vídeo com som desde o início"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 5 6 9H2v6h4l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg> Assistir com som · 1 min</button>
       </div>
+      <p class="video-note">Como funciona em 1 minuto · demonstração com dados simulados</p>
     </div>
   </div>
 </section>
@@ -280,8 +282,18 @@
 <section class="alt" id="funcoes">
   <div class="wrap">
     <h2>Tudo o que você precisa, direto na Shopee</h2>
-    <p class="sub">Abra a Shopee, pesquise um produto e o Garimpa3D analisa tudo para você.</p>
+    <p class="sub">Abra a Shopee, pesquise um produto e o Garimpa3D analisa tudo para você. Veja todas as funções em 1 minuto e meio:</p>
+    <div class="video-wide">
+      <div class="video" data-video>
+        <video src="videos/garimpa3d-funcoes.mp4" poster="videos/garimpa3d-funcoes.jpg" preload="none" playsinline controls aria-label="Vídeo: todas as funções do Garimpa3D"></video>
+      </div>
+      <p class="video-note">Legendado · demonstração com dados simulados</p>
+    </div>
     <div class="features">
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.5-1-1.6-1.5-3-1.5-1.7 0-3 .9-3 2.2 0 3 6 1.6 6 4.6 0 1.3-1.3 2.2-3 2.2-1.4 0-2.6-.6-3.1-1.6M12 6.5V8m0 8v1.5"/></svg></div><div><h3>Quanto cobrar na Shopee e no TikTok Shop<span class="new">Novo</span></h3><p>Informe o peso e o tempo da peça: você vê o preço de venda, o preço cheio para a oferta relâmpago e o preço mínimo, com as taxas de cada plataforma.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg></div><div><h3>Kits que aumentam o ticket<span class="new">Novo</span></h3><p>Preço e lucro por pedido para kits de 2 e 3 peças: a taxa fixa e a embalagem são pagas uma vez só.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h10M4 18h6"/><path d="m15 17 2 2 4-4"/></svg></div><div><h3>Primeiras vendas em 3 passos<span class="new">Novo</span></h3><p>Escolha o produto, veja o preço e gere título e descrição. Os concorrentes que mais vendem já vêm selecionados.</p></div></div>
+      <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7Zm14 0-3 7a3 3 0 0 0 6 0l-3-7Z"/></svg></div><div><h3>Comparador de lucro por hora</h3><p>Até três produtos lado a lado com o seu custo, para imprimir primeiro o que rende mais por hora de máquina.</p></div></div>
       <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 3v17h17M9 16v-5m5 5V7m5 9V4"/></svg></div><div><h3>Vendas por mês em cada anúncio</h3><p>Selos na busca com vendas, faturamento, lucro por unidade e idade do anúncio.</p></div></div>
       <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg></div><div><h3>Vale a pena entrar?</h3><p>Nota de 0 a 10 para cada nicho: procura, concorrência, espaço para novatos e margem.</p></div></div>
       <div class="feat"><div class="ico"><svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m20 0v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><circle cx="9" cy="7" r="4"/></svg></div><div><h3>Saturação do mercado</h3><p>Veja se a busca está aberta, disputada ou dominada por poucas lojas, quanto dos anúncios é pago e se anúncios novos já estão vendendo.</p></div></div>
@@ -305,6 +317,7 @@
         <thead><tr><th></th><th class="us">Garimpa3D</th><th>Ferramentas genéricas</th></tr></thead>
         <tbody>
           <tr><th>Onde funciona</th><td class="us"><span class="yes">✓</span> Direto nas páginas da Shopee, enquanto você navega</td><td class="no">Muitas focam em outros marketplaces ou funcionam só num site separado</td></tr>
+          <tr><th>Preço para Shopee e TikTok Shop</th><td class="us"><span class="yes">✓</span> Preço de venda, preço cheio para promoção e kits, com as taxas de cada plataforma</td><td class="no">Geralmente cobrem um marketplace só</td></tr>
           <tr><th>Custo da peça 3D</th><td class="us"><span class="yes">✓</span> Filamento, energia, perdas e embalagem no cálculo do lucro</td><td class="no">Calculam só comissão e imposto</td></tr>
           <tr><th>Cores que vendem</th><td class="us"><span class="yes">✓</span> Ranking de cores e variações, para imprimir só o que sai</td><td class="no">Raramente separam por cor</td></tr>
           <tr><th>Reclamações de peças</th><td class="us"><span class="yes">✓</span> Quebra, tamanho, acabamento e cor diferente da foto, com o que fazer melhor</td><td class="no">Mostram só a nota média</td></tr>
@@ -324,7 +337,7 @@
     <div class="steps">
       <div class="step"><h3>Assine</h3><p>Escolha o plano mensal ou o vitalício. Pix, cartão ou boleto.</p></div>
       <div class="step"><h3>Instale e entre</h3><p>Instale a extensão e entre com o e-mail da compra e o código que chega por e-mail.</p></div>
-      <div class="step"><h3>Garimpe</h3><p>Pesquise na Shopee e veja as análises aparecerem sozinhas.</p></div>
+      <div class="step"><h3>Garimpe e precifique</h3><p>Pesquise na Shopee, veja as análises aparecerem sozinhas e descubra quanto cobrar na Shopee e no TikTok Shop.</p></div>
     </div>
   </div>
 </section>
@@ -394,7 +407,7 @@
   <div class="wrap">
     <div class="final">
       <h2>Pare de adivinhar. Comece a garimpar.</h2>
-      <p>Descubra hoje o que vale a pena imprimir e vender na Shopee.</p>
+      <p>Descubra hoje o que vale a pena imprimir e quanto cobrar na Shopee e no TikTok Shop.</p>
       <a class="btn" href="#planos">Escolher meu plano</a>
     </div>
   </div>
@@ -410,5 +423,17 @@
   </div>
 </footer>
 
+<script>
+  // Vídeo do topo começa mudo e legendado; o botão reinicia com som.
+  document.querySelectorAll('[data-video]').forEach(box => {
+    const v = box.querySelector('video'), b = box.querySelector('.sound');
+    if (!v) return;
+    if (b) b.addEventListener('click', () => { v.muted = false; v.loop = false; v.currentTime = 0; v.controls = true; v.play(); box.classList.add('playing'); });
+    // Só um vídeo com som por vez.
+    v.addEventListener('play', () => { if (v.muted) return; document.querySelectorAll('video').forEach(o => { if (o !== v && !o.paused) o.pause(); }); });
+  });
+  // Quem pede menos movimento não vê o vídeo tocar sozinho.
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('video[autoplay]').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+</script>
 </body>
 </html>
