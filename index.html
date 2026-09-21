@@ -3,12 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Garimpa3D – Descubra o que vende e quanto cobrar na Shopee e no TikTok Shop</title>
-  <meta name="description" content="Extensão para Chrome que mostra vendas por mês, cores campeãs, lucro real, preço para Shopee e TikTok Shop e títulos que vendem. Feita para quem vende peças impressas em 3D.">
-  <meta property="og:title" content="Garimpa3D – o que vende e quanto cobrar">
-  <meta property="og:description" content="Veja em 1 minuto como o Garimpa3D mostra vendas, lucro e o preço certo para Shopee e TikTok Shop.">
-  <meta property="og:image" content="videos/garimpa3d-em-1-minuto.jpg">
+  <title>Garimpa3D – Extensão Shopee para quem vende impressão 3D</title>
+  <meta name="description" content="Extensão para Chrome que mostra vendas por mês na Shopee, cores campeãs e lucro real, e calcula quanto cobrar na Shopee e no TikTok Shop pela sua peça 3D.">
+  <link rel="canonical" href="https://garimpa3d.vercel.app/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#ee4d2d">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Garimpa3D">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://garimpa3d.vercel.app/">
+  <meta property="og:title" content="Garimpa3D – Extensão Shopee para quem vende impressão 3D">
+  <meta property="og:description" content="Extensão para Chrome que mostra vendas por mês na Shopee, cores campeãs e lucro real, e calcula quanto cobrar na Shopee e no TikTok Shop pela sua peça 3D.">
+  <meta property="og:image" content="https://garimpa3d.vercel.app/videos/garimpa3d-em-1-minuto.jpg">
+  <meta property="og:image:width" content="1280">
+  <meta property="og:image:height" content="720">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Garimpa3D – Extensão Shopee para quem vende impressão 3D">
+  <meta name="twitter:description" content="Extensão para Chrome que mostra vendas por mês na Shopee, cores campeãs e lucro real, e calcula quanto cobrar na Shopee e no TikTok Shop pela sua peça 3D.">
+  <meta name="twitter:image" content="https://garimpa3d.vercel.app/videos/garimpa3d-em-1-minuto.jpg">
   <style>
     :root { --ink: #222923; --muted: #62685f; --line: #dcded5; --soft: #f0f1eb; --accent: #bd421f; --good: #3f6b4d; --bg: #fafaf6; }
     * { box-sizing: border-box; }
@@ -232,14 +245,17 @@
       display: block; flex: 0 0 28px; width: 28px; height: 28px;
       min-width: 28px; overflow: visible;
     }
+      @media (max-width: 560px) { .header-actions .header-link { display: none; } }
+    .btn .icon { width: 20px; height: 20px; vertical-align: -4px; margin-right: 4px; }
   </style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://garimpa3d.vercel.app/#org","name":"Garimpa3D","url":"https://garimpa3d.vercel.app/","logo":"https://garimpa3d.vercel.app/favicon.svg","email":"aionbotia@gmail.com","sameAs":["https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR"]},{"@type":"WebSite","@id":"https://garimpa3d.vercel.app/#site","url":"https://garimpa3d.vercel.app/","name":"Garimpa3D","inLanguage":"pt-BR","publisher":{"@id":"https://garimpa3d.vercel.app/#org"}},{"@type":"SoftwareApplication","@id":"https://garimpa3d.vercel.app/#app","name":"Garimpa3D – Análise para vendedores 3D","applicationCategory":"BusinessApplication","applicationSubCategory":"Extensão de navegador","operatingSystem":"Google Chrome, Microsoft Edge, Brave, Opera","url":"https://garimpa3d.vercel.app/","installUrl":"https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR","downloadUrl":"https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR","inLanguage":"pt-BR","description":"Extensão para Chrome que mostra vendas por mês na Shopee, cores campeãs e lucro real, e calcula quanto cobrar na Shopee e no TikTok Shop pela sua peça 3D.","publisher":{"@id":"https://garimpa3d.vercel.app/#org"},"image":"https://garimpa3d.vercel.app/videos/garimpa3d-em-1-minuto.jpg","offers":[{"@type":"Offer","name":"Plano Mensal","price":"49.90","priceCurrency":"BRL","url":"https://pay.kiwify.com.br/4R8F7N6"},{"@type":"Offer","name":"Plano Vitalício","price":"197.00","priceCurrency":"BRL","url":"https://pay.kiwify.com.br/8T07aas"}]},{"@type":"VideoObject","name":"Garimpa3D em 1 minuto","description":"Como o Garimpa3D mostra na Shopee o que vende e quanto cobrar na Shopee e no TikTok Shop (demonstração com dados simulados).","thumbnailUrl":"https://garimpa3d.vercel.app/videos/garimpa3d-em-1-minuto.jpg","contentUrl":"https://garimpa3d.vercel.app/videos/garimpa3d-em-1-minuto.mp4","uploadDate":"2026-09-21","duration":"PT1M3S","inLanguage":"pt-BR"},{"@type":"VideoObject","name":"Funções do Garimpa3D","description":"Todas as funções da extensão Garimpa3D para quem vende peças impressas em 3D na Shopee (demonstração com dados simulados).","thumbnailUrl":"https://garimpa3d.vercel.app/videos/garimpa3d-funcoes.jpg","contentUrl":"https://garimpa3d.vercel.app/videos/garimpa3d-funcoes.mp4","uploadDate":"2026-09-21","duration":"PT1M39S","inLanguage":"pt-BR"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Como instalar o Garimpa3D?","acceptedAnswer":{"@type":"Answer","text":"Pela Chrome Web Store oficial: abra a página do Garimpa3D na Chrome Web Store, clique em \"Usar no Chrome\" e fixe o ícone na barra do navegador. Depois entre com o e-mail usado na compra. No Edge, Brave e Opera a instalação é pela mesma loja."}},{"@type":"Question","name":"O Garimpa3D é gratuito?","acceptedAnswer":{"@type":"Answer","text":"A instalação pela Chrome Web Store é gratuita, mas para usar as análises é preciso um plano (Mensal ou Vitalício), com garantia de 7 dias. A calculadora de preço para Shopee é grátis e não precisa de cadastro."}},{"@type":"Question","name":"Como saber quanto cobrar por uma peça impressa em 3D?","acceptedAnswer":{"@type":"Answer","text":"Some filamento, energia, perdas e embalagem para ter o custo da peça e acrescente a comissão da plataforma, o imposto e a margem que você quer. A calculadora faz essa conta para a Shopee. Na extensão, você informa o peso e o tempo de impressão e vê o preço de venda, o preço cheio para a oferta relâmpago e o preço mínimo na Shopee e no TikTok Shop."}},{"@type":"Question","name":"Funciona para qualquer produto ou só para 3D?","acceptedAnswer":{"@type":"Answer","text":"Funciona em qualquer busca da Shopee. Ele já vem com o nicho \"Impressão 3D\" configurado e tem a calculadora de custo de peça impressa, mas você pode criar outros nichos."}},{"@type":"Question","name":"Em quais navegadores funciona?","acceptedAnswer":{"@type":"Answer","text":"Google Chrome e navegadores baseados nele: Microsoft Edge, Brave e Opera, no computador."}},{"@type":"Question","name":"Os números de vendas são exatos?","acceptedAnswer":{"@type":"Answer","text":"Vendas por mês e total vendido vêm da própria Shopee. Faturamento, lucro dos concorrentes e vendas por variação são estimativas calculadas a partir desses dados."}},{"@type":"Question","name":"Posso usar em mais de um computador?","acceptedAnswer":{"@type":"Answer","text":"Sim, em até 2 computadores cadastrados, um de cada vez. A assinatura é pessoal e não pode ser compartilhada."}},{"@type":"Question","name":"A Shopee pode bloquear minha conta?","acceptedAnswer":{"@type":"Answer","text":"O Garimpa3D só lê as informações que a própria Shopee já mostra na tela enquanto você navega. Ele não faz ações automáticas na sua conta, como seguir pessoas em massa."}},{"@type":"Question","name":"O que significa vitalício?","acceptedAnswer":{"@type":"Answer","text":"Você paga uma vez e usa o Garimpa3D sem mensalidade, com todas as atualizações, enquanto o produto for oferecido. Se um dia ele for encerrado, avisamos com pelo menos 90 dias de antecedência. As aulas e a planilha ficam com você."}},{"@type":"Question","name":"O que está incluído no Vitalício além da extensão?","acceptedAnswer":{"@type":"Answer","text":"Videoaulas de como usar o Garimpa3D, criar anúncios na Shopee e configurar sua primeira campanha de Shopee Ads. Você também recebe uma planilha de controle e cálculo de preços para vendas, uma calculadora completa online e acesso a uma pasta no Google Drive com vários arquivos STL para impressão 3D."}},{"@type":"Question","name":"Até quando vale o preço de fundador?","acceptedAnswer":{"@type":"Answer","text":"Até acabarem as 100 vagas. Depois o Vitalício passa a custar R$ 397."}},{"@type":"Question","name":"Como cancelo?","acceptedAnswer":{"@type":"Answer","text":"O Mensal é cancelado pela própria Kiwify, a qualquer momento, sem multa; o acesso continua até o fim do mês pago. Nos dois planos você tem 7 dias de garantia com reembolso integral."}}]}]}</script>
 </head>
 <body>
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#">⛏ <span>Garimpa<span style="color:var(--accent)">3D</span></span></a>
-    <nav class="header-actions" aria-label="Navegação principal"><a class="header-link" href="calculadora.html">Calculadora grátis</a><a class="btn sm" href="#planos">Ver planos</a></nav>
+    <a class="logo" href="/">⛏ <span>Garimpa<span style="color:var(--accent)">3D</span></span></a>
+    <nav class="header-actions" aria-label="Navegação principal"><a class="header-link" href="calculadora.html">Calculadora grátis</a><a class="header-link" href="#planos">Planos</a><a class="btn sm" href="https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR&amp;utm_source=site&amp;utm_medium=topo&amp;utm_campaign=instalar">Adicionar ao Chrome</a></nav>
   </div>
 </header>
 
@@ -248,13 +264,13 @@
   <div class="wrap">
     <div>
       <span class="tag">Para quem vende peças impressas em 3D na Shopee e no TikTok Shop</span>
-      <h1>Descubra o que <em>vende</em> antes de gastar filamento.</h1>
+      <h1>Descubra o que <em>vende</em> na Shopee antes de gastar filamento.</h1>
       <p class="lead">O Garimpa3D é uma extensão para Chrome que mostra, direto na Shopee, quanto cada anúncio vende por mês, as cores campeãs e o lucro real. Você informa o peso e o tempo da peça e ele diz quanto cobrar na Shopee e no TikTok Shop.</p>
       <div class="cta-row">
-        <a class="btn" href="#planos">Quero garimpar agora</a>
-        <a class="btn ghost" href="#funcoes">Ver todas as funções</a>
+        <a class="btn" href="https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR&amp;utm_source=site&amp;utm_medium=hero&amp;utm_campaign=instalar"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5h8.2M9 13.8 4.9 6.7M15 13.8l-4.1 7.1"/></svg> Adicionar ao Chrome</a>
+        <a class="btn ghost" href="#planos">Ver planos</a>
       </div>
-      <p class="micro">Garantia de 7 dias · Cancele quando quiser · Funciona no Chrome, Edge, Brave e Opera</p>
+      <p class="micro">Instalação pela Chrome Web Store oficial · Uso com plano Mensal ou Vitalício · Garantia de 7 dias · Chrome, Edge, Brave e Opera</p>
     </div>
 
     <div>
@@ -336,7 +352,7 @@
     <p class="sub">Instale a extensão no navegador e entre com o e-mail da compra.</p>
     <div class="steps">
       <div class="step"><h3>Assine</h3><p>Escolha o plano mensal ou o vitalício. Pix, cartão ou boleto.</p></div>
-      <div class="step"><h3>Instale e entre</h3><p>Instale a extensão e entre com o e-mail da compra e o código que chega por e-mail.</p></div>
+      <div class="step"><h3>Instale e entre</h3><p><a href="https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR&amp;utm_source=site&amp;utm_medium=passos&amp;utm_campaign=instalar">Instale pela Chrome Web Store</a> e entre com o e-mail da compra e o código que chega por e-mail.</p></div>
       <div class="step"><h3>Garimpe e precifique</h3><p>Pesquise na Shopee, veja as análises aparecerem sozinhas e descubra quanto cobrar na Shopee e no TikTok Shop.</p></div>
     </div>
   </div>
@@ -391,6 +407,9 @@
   <div class="wrap">
     <h2>Perguntas frequentes</h2>
     <p class="sub">Sobre o acesso, os planos e o uso da extensão.</p>
+    <details><summary>Como instalar o Garimpa3D?</summary><p>Pela Chrome Web Store oficial: abra a <a href="https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR&amp;utm_source=site&amp;utm_medium=faq&amp;utm_campaign=instalar">página do Garimpa3D na Chrome Web Store</a>, clique em "Usar no Chrome" e fixe o ícone na barra do navegador. Depois entre com o e-mail usado na compra. No Edge, Brave e Opera a instalação é pela mesma loja.</p></details>
+    <details><summary>O Garimpa3D é gratuito?</summary><p>A instalação pela Chrome Web Store é gratuita, mas para usar as análises é preciso um plano (Mensal ou Vitalício), com garantia de 7 dias. A <a href="/calculadora">calculadora de preço para Shopee</a> é grátis e não precisa de cadastro.</p></details>
+    <details><summary>Como saber quanto cobrar por uma peça impressa em 3D?</summary><p>Some filamento, energia, perdas e embalagem para ter o custo da peça e acrescente a comissão da plataforma, o imposto e a margem que você quer. A <a href="/calculadora">calculadora</a> faz essa conta para a Shopee. Na extensão, você informa o peso e o tempo de impressão e vê o preço de venda, o preço cheio para a oferta relâmpago e o preço mínimo na Shopee e no TikTok Shop.</p></details>
     <details><summary>Funciona para qualquer produto ou só para 3D?</summary><p>Funciona em qualquer busca da Shopee. Ele já vem com o nicho "Impressão 3D" configurado e tem a calculadora de custo de peça impressa, mas você pode criar outros nichos.</p></details>
     <details><summary>Em quais navegadores funciona?</summary><p>Google Chrome e navegadores baseados nele: Microsoft Edge, Brave e Opera, no computador.</p></details>
     <details><summary>Os números de vendas são exatos?</summary><p>Vendas por mês e total vendido vêm da própria Shopee. Faturamento, lucro dos concorrentes e vendas por variação são estimativas calculadas a partir desses dados.</p></details>
@@ -408,7 +427,7 @@
     <div class="final">
       <h2>Pare de adivinhar. Comece a garimpar.</h2>
       <p>Descubra hoje o que vale a pena imprimir e quanto cobrar na Shopee e no TikTok Shop.</p>
-      <a class="btn" href="#planos">Escolher meu plano</a>
+      <div class="cta-row" style="justify-content:center"><a class="btn" href="#planos">Escolher meu plano</a><a class="btn ghost" href="https://chromewebstore.google.com/detail/garimpa3d-%E2%80%93-an%C3%A1lise-para/jiiohhjnhpomgkfofaogiedilaioimec?hl=pt-BR&amp;utm_source=site&amp;utm_medium=final&amp;utm_campaign=instalar"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 8.5h8.2M9 13.8 4.9 6.7M15 13.8l-4.1 7.1"/></svg> Adicionar ao Chrome</a></div>
     </div>
   </div>
 </section>
@@ -418,7 +437,7 @@
 <footer>
   <div class="wrap">
     <p>⛏ Garimpa3D · RC Suporte – CNPJ 43.260.654/0001-67 · São Bernardo do Campo – SP</p>
-    <p><a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Política de Privacidade</a> · <a href="mailto:aionbotia@gmail.com">aionbotia@gmail.com</a></p>
+    <p><a href="/calculadora">Calculadora de preço para Shopee</a> · <a href="termos.html">Termos de Uso</a> · <a href="privacidade.html">Política de Privacidade</a> · <a href="mailto:aionbotia@gmail.com">aionbotia@gmail.com</a></p>
     <p>O Garimpa3D é uma ferramenta independente e não é afiliado, patrocinado ou endossado pela Shopee.</p>
   </div>
 </footer>
