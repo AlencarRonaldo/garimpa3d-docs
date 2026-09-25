@@ -6,6 +6,7 @@
   "outputDirectory": ".",
   "trailingSlash": false,
   "redirects": [
+    { "source": "/afiliados.html", "destination": "/afiliados", "permanent": true },
     {
       "source": "/index.html",
       "destination": "/",
@@ -28,6 +29,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/afiliados", "destination": "/afiliados.html" },
     {
       "source": "/calculadora",
       "destination": "/calculadora.html"
