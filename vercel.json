@@ -26,6 +26,11 @@
       "source": "/privacidade.html",
       "destination": "/privacidade",
       "permanent": true
+    },
+    {
+      "source": "/como-usar.html",
+      "destination": "/como-usar",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -41,6 +46,10 @@
     {
       "source": "/privacidade",
       "destination": "/privacidade.html"
+    },
+    {
+      "source": "/como-usar",
+      "destination": "/como-usar.html"
     }
   ]
 }
